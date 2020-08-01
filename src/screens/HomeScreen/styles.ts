@@ -1,16 +1,9 @@
 import styled from 'styled-components/native';
-import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import CustomButton from '../../components/CustomButton';
 
 import {colors, fonts} from '../../constants';
-
-export const Container = styled(LinearGradient).attrs(() => ({
-  colors: [colors.backgroundPrimary, colors.backgroundSecondary],
-}))`
-  flex: 1;
-`;
 
 export const Content = styled(SafeAreaView)`
   flex: 1;

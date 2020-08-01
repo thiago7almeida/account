@@ -3,7 +3,6 @@ import React from 'react';
 import ProfileImage from '../../components/ProfileImage';
 
 import {
-  Container,
   Content,
   Button,
   ProfileInfoContainer,
@@ -11,10 +10,11 @@ import {
   NameText,
   EmailText,
 } from './styles';
+import GradientContainer from '../../components/GradientContainer';
 
 const HomeScreen: React.FC = () => {
   return (
-    <Container>
+    <GradientContainer>
       <Content>
         <ProfileInfoContainer>
           <ProfileImage />
@@ -26,7 +26,7 @@ const HomeScreen: React.FC = () => {
           <Button>histórico de envios</Button>
         </ButtonsContainer>
       </Content>
-    </Container>
+    </GradientContainer>
   );
 };
 
