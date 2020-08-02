@@ -5,8 +5,10 @@ platform :ios, '10.0'
 
 target 'account' do
   config = use_native_modules!
-
   use_react_native!(:path => config["reactNativePath"])
+  
+  
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'accountTests' do
     inherit! :complete
