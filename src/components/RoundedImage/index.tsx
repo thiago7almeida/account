@@ -1,6 +1,4 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {colors, fonts} from '../../constants';
 
 import {Image, NoImage, NoImageText} from './styles';
 

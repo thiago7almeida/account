@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from '../../screens/HomeScreen';
 import ContactListScreen from '../../screens/ContactListScreen';
+import HistoryScreen from '../../screens/HistoryScreen';
+
 import {colors} from '../../constants';
 
 const Stack = createStackNavigator();
@@ -24,6 +26,17 @@ export default function App() {
             headerTransparent: true,
             headerTintColor: colors.white,
             headerTitle: 'ENVIAR DINHEIRO',
+            headerBackTitleVisible: false,
+            headerTitleAlign: 'center',
+          }}
+        />
+        <Stack.Screen
+          name="History"
+          component={HistoryScreen}
+          options={{
+            headerTransparent: true,
+            headerTintColor: colors.white,
+            headerTitle: 'HISTÓRICO DE ENVIOS',
             headerBackTitleVisible: false,
             headerTitleAlign: 'center',
           }}

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 import GradientContainer from '../../components/GradientContainer';
-import {Content, ContactList} from './styles';
 import ContactItem from '../../components/ContactItem';
-import {Separator} from '../../components/Separator';
+
+import {Content, ContactList} from './styles';
 
 interface Contact {
   image?: string;
@@ -42,8 +42,7 @@ const ContactListScreen: React.FC = () => {
           showsVerticalScrollIndicator={false}
           keyExtractor={(_, index) => index.toString()}
           data={data}
-          ItemSeparatorComponent={Separator}
-          renderItem={({item}) => <ContactItem contact={item} />}
+          renderItem={({item}) => <ContactItem withSeparator contact={item} />}
         />
       </Content>
     </GradientContainer>

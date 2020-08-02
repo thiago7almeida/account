@@ -1,13 +1,13 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import {metrics, colors, fonts} from '../../constants';
 import CustomButton from '../CustomButton';
 
 export const Container = styled.TouchableOpacity`
   flex-grow: 1;
   flex-direction: row;
-  margin-top: ${metrics.margin}px;
-  margin-bottom: ${metrics.margin}px;
+  margin: ${metrics.margin}px;
 `;
 
 export const NameText = styled.Text`
@@ -18,6 +18,11 @@ export const NameText = styled.Text`
 
 export const PhoneText = styled.Text`
   font-size: ${fonts.large}px;
+  color: ${colors.primary};
+`;
+
+export const ValueText = styled.Text`
+  font-size: ${fonts.regular}px;
   color: ${colors.primary};
 `;
 

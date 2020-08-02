@@ -10,5 +10,9 @@ export const Content = styled(SafeAreaView)`
 `;
 
 export const ContactList = styled(FlatList)`
+  margin-top: ${metrics.margin}px;
+`;
+
+export const ContactContainer = styled.View`
   padding: 0 ${metrics.margin}px;
 `;

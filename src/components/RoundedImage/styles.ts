@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {ImageProps, ViewProps, TextProps} from 'react-native';
+
 import {colors, fonts} from '../../constants';
 
 interface CustomImageProps extends ImageProps {
