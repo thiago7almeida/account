@@ -26,6 +26,10 @@ export const Button = styled(CustomButton)`
   width: 300px;
   margin-bottom: 15px;
 `;
+export const LoadingContainer = styled.View`
+  height: 180px;
+  margin-top: 30px;
+`;
 
 export const NameText = styled.Text`
   color: ${colors.white};

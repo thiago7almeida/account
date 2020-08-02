@@ -8,14 +8,18 @@ import {
   NoImage,
 } from './styles';
 
-const ProfileImage: React.FC = () => {
+type Props = {
+  photo: string;
+};
+
+const ProfileImage: React.FC<Props> = ({photo}) => {
   return (
     <GradiendBorder>
       <SeparatorBorderContainer>
         <SeparatorBorder />
       </SeparatorBorderContainer>
       <NoImage />
-      <Image />
+      <Image source={{uri: photo}} />
     </GradiendBorder>
   );
 };
