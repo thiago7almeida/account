@@ -5,6 +5,7 @@ import {
   GradiendBorder,
   SeparatorBorder,
   SeparatorBorderContainer,
+  NoImage,
 } from './styles';
 
 const ProfileImage: React.FC = () => {
@@ -13,6 +14,7 @@ const ProfileImage: React.FC = () => {
       <SeparatorBorderContainer>
         <SeparatorBorder />
       </SeparatorBorderContainer>
+      <NoImage />
       <Image />
     </GradiendBorder>
   );

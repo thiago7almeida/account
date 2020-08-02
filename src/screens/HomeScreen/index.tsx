@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import ProfileImage from '../../components/ProfileImage';
 
@@ -13,6 +14,11 @@ import {
 import GradientContainer from '../../components/GradientContainer';
 
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation();
+
+  const goToContactList = () => {
+    navigation.navigate('ContactList');
+  };
   return (
     <GradientContainer>
       <Content>
@@ -22,7 +28,7 @@ const HomeScreen: React.FC = () => {
           <EmailText>thi@email.com</EmailText>
         </ProfileInfoContainer>
         <ButtonsContainer>
-          <Button>enviar dinheiro</Button>
+          <Button onPress={goToContactList}>enviar dinheiro</Button>
           <Button>histórico de envios</Button>
         </ButtonsContainer>
       </Content>

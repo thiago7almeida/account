@@ -14,6 +14,13 @@ export const Image = styled.Image.attrs({
   height: 140px;
   border-radius: 70px;
 `;
+export const NoImage = styled.View`
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  background-color: ${colors.backgroundTertiary};
+  position: absolute;
+`;
 
 export const GradiendBorder = styled(LinearGradient).attrs({
   colors: [colors.transparent, colors.border],
