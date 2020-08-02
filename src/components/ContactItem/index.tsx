@@ -20,14 +20,16 @@ import {
   ValueText,
 } from './styles';
 import {Separator} from '../Separator';
+import {IContact} from '../../models/contact';
 
 const ContactItem: React.FC<{
-  contact: any;
-  withValue: boolean;
-  withSeparator: boolean;
-  disable: boolean;
+  contact: IContact;
+  withValue?: boolean;
+  withSeparator?: boolean;
+  disable?: boolean;
 }> = ({contact, withValue = false, withSeparator = false, disable = false}) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const {name, photo, phone} = contact;
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -38,12 +40,12 @@ const ContactItem: React.FC<{
       {withSeparator && <Separator />}
       <Container onPress={disable ? null : toggleModal}>
         <>
-          <RoundedImage image={contact.image} />
+          <RoundedImage image={photo} name={name} />
           <InfoContainer>
             <View>
-              <NameText>Débora Pomposa</NameText>
-              <PhoneText>(11)998654-78521</PhoneText>
-              {withValue && <ValueText>{contact.value}</ValueText>}
+              <NameText>{name}</NameText>
+              <PhoneText>{phone}</PhoneText>
+              {/* {withValue && <ValueText>{contact.value}</ValueText>} */}
             </View>
           </InfoContainer>
         </>

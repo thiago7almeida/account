@@ -22,14 +22,20 @@ export const Image = styled.Image<CustomImageProps>`
   border-color: ${colors.primary};
   border-radius: ${({size}) => size / 2}px;
 `;
+
 export const NoImage = styled.View<CustomViewProps>`
   border-width: ${({scale}) => 2 * scale}px;
   width: ${({size}) => size}px;
   height: ${({size}) => size}px;
   justify-content: center;
   align-items: center;
+  position: absolute;
   border-color: ${colors.primary};
   border-radius: ${({size}) => size / 2}px;
+`;
+export const NoImageContent = styled.View<CustomViewProps>`
+  width: ${({size}) => size}px;
+  height: ${({size}) => size}px;
 `;
 
 export const NoImageText = styled.Text<CustomTextProps>`
