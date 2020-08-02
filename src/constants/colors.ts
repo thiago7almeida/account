@@ -3,6 +3,7 @@ export const colors = {
   backgroundSecondary: '#004f84',
   backgroundTertiary: '#1f576b',
   primary: '#01a8aa',
+  secondary: '#015085',
   white: '#fff',
   border: '#00fdc4',
   borderSecondary: '#00fdc410',
