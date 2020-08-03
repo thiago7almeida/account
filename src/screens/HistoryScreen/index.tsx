@@ -12,7 +12,7 @@ const ContactListScreen: React.FC = () => {
   const transfers = useSelector((state: AppState) => state.transfers);
 
   return (
-    <GradientContainer>
+    <GradientContainer testID="historyContainer">
       <Content>
         <ContactList
           ListHeaderComponent={Chart}

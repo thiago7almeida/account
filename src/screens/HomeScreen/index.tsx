@@ -54,17 +54,22 @@ const HomeScreen: React.FC = () => {
       <Content>
         <ProfileInfoContainer>
           <ProfileImage photo={user.photo} />
-          <NameText>{user.name}</NameText>
-          <EmailText>{user.email}</EmailText>
+          <NameText testID="nameText">{user.name}</NameText>
+          <EmailText testID="emailText">{user.email}</EmailText>
         </ProfileInfoContainer>
         {user.loading || !!!user.token ? (
-          <LoadingContainer>
+          <LoadingContainer testID="loadingContainer">
             <DotIndicator color={colors.primary} size={30} />
           </LoadingContainer>
         ) : (
-          <ButtonsContainer>
-            <Button onPress={goToContactList}>enviar dinheiro</Button>
-            <Button loading={transfers.loading} onPress={getTransfersAsync}>
+          <ButtonsContainer testID="buttons">
+            <Button testID="goToContacts" onPress={goToContactList}>
+              enviar dinheiro
+            </Button>
+            <Button
+              testID="goToHistory"
+              loading={transfers.loading}
+              onPress={getTransfersAsync}>
               histórico de envios
             </Button>
           </ButtonsContainer>
