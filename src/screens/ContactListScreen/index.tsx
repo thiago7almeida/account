@@ -12,9 +12,10 @@ const ContactListScreen: React.FC = () => {
   const contacts = useSelector((state: AppState) => state.contacts);
 
   return (
-    <GradientContainer>
+    <GradientContainer testID="contactListContainer">
       <Content>
         <ContactList
+          testID="contactList"
           showsVerticalScrollIndicator={false}
           keyExtractor={(_, index) => index.toString()}
           data={contacts.contacts}

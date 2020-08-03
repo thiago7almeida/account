@@ -46,7 +46,7 @@ const ContactItem: React.FC<Props> = ({
   return (
     <>
       {withSeparator && <Separator />}
-      <Container onPress={pressContact}>
+      <Container testID={'contactButton'} onPress={pressContact}>
         <>
           <RoundedImage image={photo} name={name} />
           <InfoContainer>

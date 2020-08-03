@@ -56,6 +56,7 @@ const SendMoneyModal: React.FC<Props> = ({visible = false, contact}) => {
         <DescribeTextModal>Valor a enviar:</DescribeTextModal>
         <InputContainer>
           <TextInputMask
+            testID="valueText"
             options={{
               unit: 'R$',
             }}
@@ -67,7 +68,10 @@ const SendMoneyModal: React.FC<Props> = ({visible = false, contact}) => {
           />
         </InputContainer>
         {money !== 'R$0,00' && (
-          <Button loading={contacts.loading} onPress={sendMoneyToContact}>
+          <Button
+            testID="buttonSend"
+            loading={contacts.loading}
+            onPress={sendMoneyToContact}>
             Enviar
           </Button>
         )}
