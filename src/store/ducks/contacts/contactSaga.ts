@@ -1,5 +1,7 @@
 import {all, fork, put, call, takeEvery} from 'redux-saga/effects';
 import {showMessage} from 'react-native-flash-message';
+import * as RootNavigation from '../../../components/Router/RootNavigation';
+
 import {
   Types,
   setModalState,
@@ -26,6 +28,8 @@ function* sendMoney(action: SendMoneyToAction) {
     yield put(sendMoneySuccess());
 
     yield put(removeContact());
+
+    yield RootNavigation.navigate('Home');
 
     yield showMessage({
       backgroundColor: colors.primary,
