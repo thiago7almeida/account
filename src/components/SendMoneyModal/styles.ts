@@ -75,8 +75,11 @@ export const InputContainer = styled.View`
 
 export const TextInput = styled.TextInput`
   font-size: ${fonts.extraLarge * 2}px;
+  width: 100%;
   color: ${colors.primary};
   font-weight: bold;
+  text-align: center;
+  padding: 0 ${metrics.padding}px;
 `;
 
 export const Button = styled(CustomButton)`
