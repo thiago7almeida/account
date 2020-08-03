@@ -18,7 +18,6 @@ export const Types = {
  */
 interface IUserState extends IUser {
   loading: boolean;
-  token?: string | null;
 }
 
 const initialState: IUserState = {
@@ -43,7 +42,8 @@ export default function reducer(
     case Types.GET_TOKEN:
       return {...state, loading: true};
     case Types.GET_TOKEN_SUCCESS:
-      return {...state, loading: false, token: action.payload};
+      const token: string = action.payload;
+      return {...state, loading: false, token};
     case Types.GET_TOKEN_ERROR:
       return {...state, loading: false};
 

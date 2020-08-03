@@ -7,9 +7,12 @@ import {generateContacts} from './fakeContacts';
  ************************
  */
 export const Types = {
-  GET_TOKEN: 'user/GET_TOKEN',
-  GET_TOKEN_SUCCESS: 'user/GET_TOKEN_SUCCESS',
-  GET_TOKEN_ERROR: 'user/GET_TOKEN_ERROR',
+  SET_CONTACT: 'contacts/SET_CONTACT',
+  REMOVE_CONTACT: 'contacts/REMOVE_CONTACT',
+  SET_MODAL_VISIBLE: 'contacts/SET_MODAL_VISIBLE',
+  SEND_MONEY: 'contacts/SEND_MONEY',
+  SEND_MONEY_SUCCESS: 'contacts/SEND_MONEY_SUCCESS',
+  SEND_MONEY_ERROR: 'contacts/SEND_MONEY_ERROR',
 };
 
 /**
@@ -19,10 +22,16 @@ export const Types = {
  */
 interface IContactState {
   contacts: IContact[];
+  contact?: IContact | null;
+  modaVisible: boolean;
+  loading: boolean;
 }
 
 const initialState: IContactState = {
   contacts: generateContacts(),
+  contact: null,
+  modaVisible: false,
+  loading: false,
 };
 
 /**
@@ -35,12 +44,18 @@ export default function reducer(
   action: {type: string; payload?: any},
 ) {
   switch (action.type) {
-    // case Types.GET_TOKEN:
-    //   return {...state, loading: true};
-    // case Types.GET_TOKEN_SUCCESS:
-    //   return {...state, loading: false, token: action.payload};
-    // case Types.GET_TOKEN_ERROR:
-    //   return {...state, loading: false};
+    case Types.SET_CONTACT:
+      return {...state, contact: action.payload};
+    case Types.REMOVE_CONTACT:
+      return {...state, contact: null};
+    case Types.SET_MODAL_VISIBLE:
+      return {...state, modaVisible: action.payload};
+    case Types.SEND_MONEY:
+      return {...state, loading: true};
+    case Types.SEND_MONEY_SUCCESS:
+      return {...state, loading: false};
+    case Types.SEND_MONEY_ERROR:
+      return {...state, loading: false};
 
     default:
       return state;
@@ -49,25 +64,63 @@ export default function reducer(
 
 /**
  ************************
+ * ActionsTypes
+ ************************
+ */
+type SendMoneyToProps = {
+  id: number;
+  token: string | null;
+  value: string;
+};
+export interface SendMoneyToAction {
+  type: typeof Types.SEND_MONEY;
+  payload: SendMoneyToProps;
+}
+/**
+ ************************
  * Actions
  ************************
  */
 
-// export function getToken() {
-//   return {
-//     type: Types.GET_TOKEN,
-//   };
-// }
+export function setContact(contact: IContact) {
+  return {
+    type: Types.SET_CONTACT,
+    payload: contact,
+  };
+}
 
-// export function getTokenSuccess(token: string) {
-//   return {
-//     type: Types.GET_TOKEN_SUCCESS,
-//     payload: token,
-//   };
-// }
+export function removeContact() {
+  return {
+    type: Types.REMOVE_CONTACT,
+  };
+}
 
-// export function getTokenError() {
-//   return {
-//     type: Types.GET_TOKEN_ERROR,
-//   };
-// }
+export function setModalState(visible: boolean) {
+  return {
+    type: Types.SET_MODAL_VISIBLE,
+    payload: visible,
+  };
+}
+
+export function sendMoneyTo(
+  id: number,
+  token: string | null,
+  value: string,
+): SendMoneyToAction {
+  return {
+    type: Types.SEND_MONEY,
+    payload: {id, value, token},
+  };
+}
+
+export function sendMoneySuccess() {
+  return {
+    type: Types.SEND_MONEY_SUCCESS,
+  };
+}
+
+export function sendMoneyError() {
+  return {
+    type: Types.SEND_MONEY_ERROR,
+  };
+}

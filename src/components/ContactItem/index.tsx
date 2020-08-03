@@ -1,44 +1,41 @@
-import React, {useState} from 'react';
+import React, {useCallback} from 'react';
 import {View} from 'react-native';
-import Modal from 'react-native-modal';
+import {useDispatch} from 'react-redux';
 
 import RoundedImage from '../RoundedImage';
 
-import {
-  Container,
-  NameText,
-  PhoneText,
-  InfoContainer,
-  ModalContainer,
-  Close,
-  NameTextModal,
-  PhoneTextModal,
-  DescribeTextModal,
-  InputContainer,
-  Input,
-  Button,
-  ValueText,
-} from './styles';
+import {Container, NameText, PhoneText, InfoContainer} from './styles';
 import {Separator} from '../Separator';
-import {IContact} from '../../models/contact';
 
-const ContactItem: React.FC<{
+import {IContact} from '../../models/contact';
+import {setContact} from '../../store/ducks/contacts';
+
+type Props = {
   contact: IContact;
   withValue?: boolean;
   withSeparator?: boolean;
   disable?: boolean;
-}> = ({contact, withValue = false, withSeparator = false, disable = false}) => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const {name, photo, phone} = contact;
+};
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+const ContactItem: React.FC<Props> = ({
+  contact,
+  withValue = false,
+  withSeparator = false,
+  disable = false,
+}) => {
+  const dispatch = useDispatch();
+
+  const storeContact = useCallback(() => dispatch(setContact(contact)), [
+    dispatch,
+  ]);
+  const pressContact = () => !disable && storeContact();
+
+  const {name, photo, phone} = contact;
 
   return (
     <>
       {withSeparator && <Separator />}
-      <Container onPress={disable ? null : toggleModal}>
+      <Container onPress={pressContact}>
         <>
           <RoundedImage image={photo} name={name} />
           <InfoContainer>
@@ -50,19 +47,6 @@ const ContactItem: React.FC<{
           </InfoContainer>
         </>
       </Container>
-      <Modal isVisible={isModalVisible}>
-        <ModalContainer>
-          <Close onPress={toggleModal} />
-          <RoundedImage scale={0.9} image={contact.image} />
-          <NameTextModal>Débora Pomposa</NameTextModal>
-          <PhoneTextModal>(11)998654-78521</PhoneTextModal>
-          <DescribeTextModal>Valor a enviar:</DescribeTextModal>
-          <InputContainer>
-            <Input value="R$ 0,00" />
-          </InputContainer>
-          <Button>Enviar</Button>
-        </ModalContainer>
-      </Modal>
     </>
   );
 };

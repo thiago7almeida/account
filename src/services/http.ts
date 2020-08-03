@@ -11,3 +11,18 @@ export const generateToken = () =>
     url: 'GenerateToken',
     method: 'GET',
   });
+
+export const sendMoneyToContact = (
+  ClienteId: number,
+  token: string | null,
+  valor: string,
+) =>
+  api.request({
+    url: `SendMoney`,
+    method: 'POST',
+    data: {
+      ClienteId,
+      token,
+      valor,
+    },
+  });

@@ -6,6 +6,7 @@ import ContactItem from '../../components/ContactItem';
 
 import {Content, ContactList} from './styles';
 import {AppState} from '../../store';
+import SendMoneyModal from '../../components/SendMoneyModal';
 
 const ContactListScreen: React.FC = () => {
   const contacts = useSelector((state: AppState) => state.contacts);
@@ -20,6 +21,12 @@ const ContactListScreen: React.FC = () => {
           renderItem={({item}) => <ContactItem withSeparator contact={item} />}
         />
       </Content>
+      {!!contacts.contact && (
+        <SendMoneyModal
+          visible={contacts.modaVisible}
+          contact={contacts.contact}
+        />
+      )}
     </GradientContainer>
   );
 };

@@ -1,12 +1,23 @@
 import React from 'react';
-import {TouchableHighlightProps} from 'react-native';
+import {TouchableHighlightProps, View} from 'react-native';
+import {DotIndicator} from 'react-native-indicators';
 
 import {Container, Title} from './styles';
+import {colors} from '../../constants';
 
-const CustomButton: React.FC<TouchableHighlightProps> = (props) => {
+interface Props extends TouchableHighlightProps {
+  loading?: boolean;
+  disabled?: boolean;
+}
+
+const CustomButton: React.FC<Props> = ({loading = false, ...props}) => {
   return (
     <Container {...props}>
-      <Title>{props.children}</Title>
+      {loading ? (
+        <DotIndicator color={colors.white} size={7} />
+      ) : (
+        <Title>{props.children}</Title>
+      )}
     </Container>
   );
 };
