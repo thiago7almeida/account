@@ -6,9 +6,9 @@ const api = axios.create({
   baseURL,
 });
 
-export const generateToken = () =>
+export const generateToken = (name: string, email: string) =>
   api.request({
-    url: 'GenerateToken',
+    url: `GenerateToken?nome=${name}&email=${email}`,
     method: 'GET',
   });
 
