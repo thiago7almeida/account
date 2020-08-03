@@ -17,6 +17,7 @@ import {
 } from './styles';
 import {AppState} from '../../store';
 import * as userActions from '../../store/ducks/user';
+import * as transfersActions from '../../store/ducks/transfers';
 import {colors} from '../../constants';
 
 const HomeScreen: React.FC = () => {
@@ -24,16 +25,18 @@ const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state: AppState) => state.user);
+  const transfers = useSelector((state: AppState) => state.transfers);
 
   const getTokenAsync = useCallback(() => dispatch(userActions.getToken()), [
     dispatch,
   ]);
+  const getTransfersAsync = useCallback(
+    () => dispatch(transfersActions.getTransfers()),
+    [dispatch],
+  );
 
   const goToContactList = () => {
     navigation.navigate('ContactList');
-  };
-  const goToHistory = () => {
-    navigation.navigate('History');
   };
 
   const getToken = () => {
@@ -61,7 +64,9 @@ const HomeScreen: React.FC = () => {
         ) : (
           <ButtonsContainer>
             <Button onPress={goToContactList}>enviar dinheiro</Button>
-            <Button onPress={goToHistory}>histórico de envios</Button>
+            <Button loading={transfers.loading} onPress={getTransfersAsync}>
+              histórico de envios
+            </Button>
           </ButtonsContainer>
         )}
       </Content>

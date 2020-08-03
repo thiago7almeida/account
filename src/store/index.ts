@@ -3,13 +3,14 @@ import createSagaMiddleware from 'redux-saga';
 
 import user from './ducks/user';
 import contacts from './ducks/contacts';
+import transfers from './ducks/transfers';
 import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [sagaMiddleware];
 
-const rootReducer = combineReducers({user, contacts});
+const rootReducer = combineReducers({user, contacts, transfers});
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 sagaMiddleware.run(sagas);

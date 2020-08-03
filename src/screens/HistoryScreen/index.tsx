@@ -5,20 +5,11 @@ import ContactItem from '../../components/ContactItem';
 import Chart from '../../components/Chart';
 
 import {Content, ContactList, ContactContainer} from './styles';
-
-interface Contact {
-  image?: string;
-  value: number;
-}
+import {useSelector} from 'react-redux';
+import {AppState} from '../../store';
 
 const ContactListScreen: React.FC = () => {
-  const [data] = useState<Contact[]>([
-    {value: 30.5},
-    {value: 30.5},
-    {value: 30.5},
-    {value: 30.5},
-    {value: 30.5},
-  ]);
+  const transfers = useSelector((state: AppState) => state.transfers);
 
   return (
     <GradientContainer>
@@ -27,10 +18,10 @@ const ContactListScreen: React.FC = () => {
           ListHeaderComponent={Chart}
           showsVerticalScrollIndicator={false}
           keyExtractor={(_, index) => index.toString()}
-          data={data}
+          data={transfers.transfers}
           renderItem={({item}) => (
             <ContactContainer>
-              <ContactItem withSeparator contact={item} withValue disable />
+              <ContactItem withSeparator transfer={item} withValue disable />
             </ContactContainer>
           )}
         />

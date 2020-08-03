@@ -7,12 +7,11 @@ import {colors} from '../../constants';
 
 interface Props extends TouchableHighlightProps {
   loading?: boolean;
-  disabled?: boolean;
 }
 
 const CustomButton: React.FC<Props> = ({loading = false, ...props}) => {
   return (
-    <Container {...props}>
+    <Container {...props} disabled={loading}>
       {loading ? (
         <DotIndicator color={colors.white} size={7} />
       ) : (

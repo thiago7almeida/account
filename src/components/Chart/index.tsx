@@ -1,28 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useSelector} from 'react-redux';
 
 import BackgroundChart from '../BackgroundChart';
 import {ChartList} from './styles';
 import ChartItem from '../ChartItem';
+import {AppState} from '../../store';
 
 const Chart: React.FC = () => {
-  const [data] = useState([
-    {value: 1600},
-    {value: 1400},
-    {value: 350},
-    {value: 100},
-  ]);
-
-  const max = data.reduce((prev, current) =>
-    prev.value > current.value ? prev : current,
+  const transfers = useSelector((state: AppState) => state.transfers);
+  const max = transfers.transferByContact.reduce((prev, current) =>
+    prev.Valor > current.Valor ? prev : current,
   );
-
   return (
     <>
       <BackgroundChart />
       <ChartList
-        renderItem={(item) => <ChartItem transfer={item.item} max={max} />}
+        renderItem={(item) => (
+          <ChartItem transfer={item.item} max={max.Valor} />
+        )}
         keyExtractor={(_, index) => index.toString()}
-        data={data}
+        data={transfers.transferByContact}
       />
     </>
   );

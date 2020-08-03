@@ -2,15 +2,25 @@ import React from 'react';
 
 import {Container, ValueText, Dot, Collumn} from './styles';
 import RoundedImage from '../RoundedImage';
+import {ITransfer} from '../../models/transfer';
 
-const ChartItem: React.FC<{transfer: any; max: number}> = ({transfer, max}) => {
-  const height = (150 * transfer.value) / max.value;
+type Props = {
+  transfer: ITransfer;
+  max: number;
+};
+
+const ChartItem: React.FC<Props> = ({transfer, max}) => {
+  const height = (150 * transfer.Valor) / max;
   return (
     <Container>
-      <ValueText>{transfer.value}</ValueText>
+      <ValueText>{transfer.Valor}</ValueText>
       <Dot />
       <Collumn height={height} />
-      <RoundedImage scale={0.5} />
+      <RoundedImage
+        name={transfer.contact?.name}
+        image={transfer.contact?.photo}
+        scale={0.5}
+      />
     </Container>
   );
 };

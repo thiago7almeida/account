@@ -29,6 +29,6 @@ export const sendMoneyToContact = (
 
 export const getAllTransfers = (token: string | null) =>
   api.request({
-    url: `SendMoney?token=${token}`,
+    url: `GetTransfers?token=${token}`,
     method: 'GET',
   });
