@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import {View} from 'react-native';
 import {useDispatch} from 'react-redux';
+import {MaskService} from 'react-native-masked-text';
 
 import RoundedImage from '../RoundedImage';
 
@@ -53,7 +54,13 @@ const ContactItem: React.FC<Props> = ({
             <View>
               <NameText>{name}</NameText>
               <PhoneText>{phone}</PhoneText>
-              {withValue && <ValueText>{Valor}</ValueText>}
+              {withValue && (
+                <ValueText>
+                  {MaskService.toMask('money', Valor?.toString() ?? '', {
+                    unit: 'R$',
+                  })}
+                </ValueText>
+              )}
             </View>
           </InfoContainer>
         </>

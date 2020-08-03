@@ -3,6 +3,7 @@ import React from 'react';
 import {Container, ValueText, Dot, Collumn} from './styles';
 import RoundedImage from '../RoundedImage';
 import {ITransfer} from '../../models/transfer';
+import {MaskService} from 'react-native-masked-text';
 
 type Props = {
   transfer: ITransfer;
@@ -13,7 +14,11 @@ const ChartItem: React.FC<Props> = ({transfer, max}) => {
   const height = (150 * transfer.Valor) / max;
   return (
     <Container>
-      <ValueText>{transfer.Valor}</ValueText>
+      <ValueText>
+        {MaskService.toMask('money', transfer.Valor?.toString() ?? '', {
+          unit: 'R$',
+        })}
+      </ValueText>
       <Dot />
       <Collumn height={height} />
       <RoundedImage
